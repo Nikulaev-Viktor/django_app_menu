@@ -12,3 +12,4 @@ class MenuItemAdmin(admin.ModelAdmin):
     list_display = ('title', 'menu', 'parent', 'named_url', 'url')
     list_filter = ('menu',)
     search_fields = ('title', 'named_url', 'url')
+

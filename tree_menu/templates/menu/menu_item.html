@@ -1,0 +1,16 @@
+{% load draw_menu %}
+<li>
+  <a href="{{ item.get_absolute_url }}" class="{% if current_path == item.get_absolute_url %}active{% endif %}">
+    {{ item.title }}
+  </a>
+
+  {% with children=all_items|children_of:item %}
+    {% if children and item.id in expanded_ids %}
+      <ul>
+        {% for child in children %}
+          {% include "menu/menu_item.html" with item=child current_path=current_path all_items=all_items expanded_ids=expanded_ids %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+</li>
